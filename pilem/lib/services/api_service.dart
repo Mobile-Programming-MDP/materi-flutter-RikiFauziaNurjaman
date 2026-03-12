@@ -3,7 +3,7 @@ import 'dart:convert';
 
 class ApiService {
   static const String baseUrl = 'https://api.themoviedb.org/3';
-  static const String apiKey = "";
+  static const String apiKey = "c4848082cf2f11c7684a3a2f607fac50";
 
   Future<List<Map<String, dynamic>>> getAllMovies() async {
     final response = await http.get(
