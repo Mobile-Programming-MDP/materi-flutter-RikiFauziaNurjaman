@@ -1,6 +1,6 @@
 name: notes
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0+1
 
 environment:
@@ -9,8 +9,16 @@ environment:
 dependencies:
   firebase_auth: ^6.4.0
   firebase_core: ^4.7.0
+  path: ^1.9.1
   flutter:
     sdk: flutter
+  cloud_firestore: ^6.3.0
+  firebase_storage: ^13.3.0
+  image_picker: ^1.2.1
+  flutter_image_compress: ^2.4.0
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:

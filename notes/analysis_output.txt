@@ -1,0 +1,217 @@
+Analyzing notes...                                              
+
+warning • The URI 'package:flutter_lints/flutter.yaml' included in '/media/Data/2_KULIAH/LATIHAN_GENAP_2026/materi-flutter-RikiFauziaNurjaman/notes/analysis_options.yaml' can't be found when analyzing '/media/Data/2_KULIAH/LATIHAN_GENAP_2026/materi-flutter-RikiFauziaNurjaman/notes' • analysis_options.yaml:1:10 • include_file_not_found
+  error • Target of URI doesn't exist: 'package:firebase_core/firebase_core.dart' • lib/firebase_options.dart:3:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:flutter/foundation.dart' • lib/firebase_options.dart:4:8 • uri_does_not_exist
+  error • Const variables must be initialized with a constant value • lib/firebase_options.dart:52:38 • const_initialized_with_non_constant_value
+  error • The method 'FirebaseOptions' isn't defined for the type 'DefaultFirebaseOptions' • lib/firebase_options.dart:52:38 • undefined_method
+  error • Const variables must be initialized with a constant value • lib/firebase_options.dart:63:42 • const_initialized_with_non_constant_value
+  error • The method 'FirebaseOptions' isn't defined for the type 'DefaultFirebaseOptions' • lib/firebase_options.dart:63:42 • undefined_method
+  error • Target of URI doesn't exist: 'package:flutter/material.dart' • lib/main.dart:1:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:firebase_core/firebase_core.dart' • lib/main.dart:3:8 • uri_does_not_exist
+  error • Undefined name 'WidgetsFlutterBinding' • lib/main.dart:7:3 • undefined_identifier
+  error • Undefined name 'Firebase' • lib/main.dart:8:9 • undefined_identifier
+  error • The function 'runApp' isn't defined • lib/main.dart:9:3 • undefined_function
+  error • Classes can only extend other classes • lib/main.dart:12:23 • extends_non_class
+  error • No associated named super constructor parameter • lib/main.dart:13:24 • super_formal_parameter_without_associated_named
+  error • Undefined class 'Widget' • lib/main.dart:16:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/main.dart:16:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/main.dart:16:16 • undefined_class
+  error • The name 'MaterialApp' isn't a class • lib/main.dart:17:18 • creation_with_non_type
+  error • Target of URI doesn't exist: 'package:cloud_firestore/cloud_firestore.dart' • lib/models/note.dart:1:8 • uri_does_not_exist
+  error • Undefined class 'Timestamp' • lib/models/note.dart:10:3 • undefined_class
+  error • Undefined class 'Timestamp' • lib/models/note.dart:11:3 • undefined_class
+  error • Undefined class 'DocumentSnapshot' • lib/models/note.dart:24:29 • undefined_class
+  error • The name 'Timestamp' isn't a type, so it can't be used in an 'as' expression • lib/models/note.dart:31:40 • cast_to_non_type
+  error • The name 'Timestamp' isn't a type, so it can't be used in an 'as' expression • lib/models/note.dart:32:40 • cast_to_non_type
+  error • Target of URI doesn't exist: 'package:flutter/material.dart' • lib/screens/note_list_screen.dart:2:8 • uri_does_not_exist
+  error • Classes can only extend other classes • lib/screens/note_list_screen.dart:6:30 • extends_non_class
+  error • No associated named super constructor parameter • lib/screens/note_list_screen.dart:7:31 • super_formal_parameter_without_associated_named
+  error • Undefined class 'State' • lib/screens/note_list_screen.dart:10:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/screens/note_list_screen.dart:10:25 • override_on_non_overriding_member
+  error • Classes can only extend other classes • lib/screens/note_list_screen.dart:13:36 • extends_non_class
+  error • Undefined class 'Widget' • lib/screens/note_list_screen.dart:15:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/screens/note_list_screen.dart:15:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/screens/note_list_screen.dart:15:16 • undefined_class
+  error • The method 'Scaffold' isn't defined for the type '_NoteListScreenState' • lib/screens/note_list_screen.dart:16:12 • undefined_method
+  error • The method 'AppBar' isn't defined for the type '_NoteListScreenState' • lib/screens/note_list_screen.dart:17:15 • undefined_method
+  error • The name 'Text' isn't a class • lib/screens/note_list_screen.dart:17:35 • creation_with_non_type
+  error • The method 'FloatingActionButton' isn't defined for the type '_NoteListScreenState' • lib/screens/note_list_screen.dart:19:29 • undefined_method
+  error • The method 'showDialog' isn't defined for the type '_NoteListScreenState' • lib/screens/note_list_screen.dart:21:11 • undefined_method
+  error • The name 'Icon' isn't a class • lib/screens/note_list_screen.dart:28:22 • creation_with_non_type
+  error • Undefined name 'Icons' • lib/screens/note_list_screen.dart:28:27 • undefined_identifier
+  error • Classes can only extend other classes • lib/screens/note_list_screen.dart:34:24 • extends_non_class
+  error • No associated named super constructor parameter • lib/screens/note_list_screen.dart:35:25 • super_formal_parameter_without_associated_named
+  error • Undefined class 'Widget' • lib/screens/note_list_screen.dart:37:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/screens/note_list_screen.dart:37:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/screens/note_list_screen.dart:37:16 • undefined_class
+  error • The method 'StreamBuilder' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:38:12 • undefined_method
+  error • The method 'Center' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:42:18 • undefined_method
+  error • The method 'Text' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:42:32 • undefined_method
+  error • Undefined name 'ConnectionState' • lib/screens/note_list_screen.dart:45:16 • undefined_identifier
+  error • The name 'Center' isn't a class • lib/screens/note_list_screen.dart:46:26 • creation_with_non_type
+  error • The method 'CircularProgressIndicator' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:46:40 • undefined_method
+  error • The method 'ListView' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:48:20 • undefined_method
+  error • Undefined name 'EdgeInsets' • lib/screens/note_list_screen.dart:49:30 • undefined_identifier
+  error • The method 'Card' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:51:24 • undefined_method
+  error • The method 'InkWell' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:52:26 • undefined_method
+  error • The method 'showDialog' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:54:23 • undefined_method
+  error • The method 'Column' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:61:28 • undefined_method
+  error • The method 'ClipRRect' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:64:31 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/screens/note_list_screen.dart:65:53 • undefined_identifier
+  error • Undefined name 'Radius' • lib/screens/note_list_screen.dart:66:44 • undefined_identifier
+  error • Undefined name 'Radius' • lib/screens/note_list_screen.dart:67:45 • undefined_identifier
+  error • Undefined name 'Image' • lib/screens/note_list_screen.dart:69:40 • undefined_identifier
+  error • Undefined name 'BoxFit' • lib/screens/note_list_screen.dart:71:40 • undefined_identifier
+  error • Undefined name 'Alignment' • lib/screens/note_list_screen.dart:72:46 • undefined_identifier
+  error • The method 'Container' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:77:31 • undefined_method
+  error • The method 'ListTile' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:78:25 • undefined_method
+  error • The method 'Text' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:79:34 • undefined_method
+  error • The method 'Text' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:80:37 • undefined_method
+  error • The method 'InkWell' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:81:37 • undefined_method
+  error • The method 'showDialog' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:83:31 • undefined_method
+  error • Undefined class 'BuildContext' • lib/screens/note_list_screen.dart:85:43 • undefined_class
+  error • The method 'AlertDialog' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:86:42 • undefined_method
+  error • The name 'Text' isn't a class • lib/screens/note_list_screen.dart:87:50 • creation_with_non_type
+  error • The method 'Text' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:88:46 • undefined_method
+  error • The name 'Widget' isn't a type, so it can't be used as a type argument • lib/screens/note_list_screen.dart:91:47 • non_type_as_type_argument
+  error • The method 'TextButton' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:92:39 • undefined_method
+  error • Undefined name 'Navigator' • lib/screens/note_list_screen.dart:94:43 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/screens/note_list_screen.dart:96:54 • creation_with_non_type
+  error • The method 'TextButton' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:98:39 • undefined_method
+  error • Undefined name 'ScaffoldMessenger' • lib/screens/note_list_screen.dart:100:43 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:103:45 • undefined_method
+  error • The method 'Text' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:104:56 • undefined_method
+  error • The name 'Color' isn't a class • lib/screens/note_list_screen.dart:107:70 • creation_with_non_type
+  error • Undefined name 'SnackBarBehavior' • lib/screens/note_list_screen.dart:111:51 • undefined_identifier
+  error • The method 'RoundedRectangleBorder' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:112:54 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/screens/note_list_screen.dart:114:53 • undefined_identifier
+  error • Undefined name 'Navigator' • lib/screens/note_list_screen.dart:121:51 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/screens/note_list_screen.dart:124:54 • creation_with_non_type
+  error • The name 'Padding' isn't a class • lib/screens/note_list_screen.dart:131:42 • creation_with_non_type
+  error • Undefined name 'EdgeInsets' • lib/screens/note_list_screen.dart:132:40 • undefined_identifier
+  error • The method 'Icon' isn't defined for the type 'NoteList' • lib/screens/note_list_screen.dart:133:38 • undefined_method
+  error • Undefined name 'Icons' • lib/screens/note_list_screen.dart:133:43 • undefined_identifier
+  error • Target of URI doesn't exist: 'package:cloud_firestore/cloud_firestore.dart' • lib/services/note_service.dart:1:8 • uri_does_not_exist
+  error • Undefined class 'FirebaseFirestore' • lib/services/note_service.dart:5:16 • undefined_class
+  error • Undefined name 'FirebaseFirestore' • lib/services/note_service.dart:5:46 • undefined_identifier
+  error • Undefined class 'CollectionReference' • lib/services/note_service.dart:6:16 • undefined_class
+  error • Undefined name 'FieldValue' • lib/services/note_service.dart:15:21 • undefined_identifier
+  error • Undefined name 'FieldValue' • lib/services/note_service.dart:16:21 • undefined_identifier
+  error • The name 'Timestamp' isn't a type, so it can't be used in an 'as' expression • lib/services/note_service.dart:33:39 • cast_to_non_type
+  error • The name 'Timestamp' isn't a type, so it can't be used in an 'as' expression • lib/services/note_service.dart:36:39 • cast_to_non_type
+  error • Undefined name 'FieldValue' • lib/services/note_service.dart:50:21 • undefined_identifier
+  error • Target of URI doesn't exist: 'package:flutter/material.dart' • lib/widgets/note_dialog.dart:4:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:flutter_image_compress/flutter_image_compress.dart' • lib/widgets/note_dialog.dart:5:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:geolocator/geolocator.dart' • lib/widgets/note_dialog.dart:6:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:image_picker/image_picker.dart' • lib/widgets/note_dialog.dart:7:8 • uri_does_not_exist
+  error • Target of URI doesn't exist: 'package:url_launcher/url_launcher.dart' • lib/widgets/note_dialog.dart:10:8 • uri_does_not_exist
+  error • Classes can only extend other classes • lib/widgets/note_dialog.dart:12:26 • extends_non_class
+  error • No associated named super constructor parameter • lib/widgets/note_dialog.dart:14:27 • super_formal_parameter_without_associated_named
+  error • Undefined class 'State' • lib/widgets/note_dialog.dart:17:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/widgets/note_dialog.dart:17:21 • override_on_non_overriding_member
+  error • Classes can only extend other classes • lib/widgets/note_dialog.dart:20:32 • extends_non_class
+  error • Undefined class 'TextEditingController' • lib/widgets/note_dialog.dart:21:9 • undefined_class
+  error • The method 'TextEditingController' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:21:50 • undefined_method
+  error • Undefined class 'TextEditingController' • lib/widgets/note_dialog.dart:22:9 • undefined_class
+  error • The method 'TextEditingController' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:22:56 • undefined_method
+  error • Undefined class 'ImagePicker' • lib/widgets/note_dialog.dart:26:9 • undefined_class
+  error • The method 'ImagePicker' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:26:31 • undefined_method
+warning • The method doesn't override an inherited method • lib/widgets/note_dialog.dart:31:8 • override_on_non_overriding_member
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:32:9 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:33:31 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:34:37 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:35:11 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:36:36 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:39:22 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:40:19 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:41:20 • undefined_identifier
+  error • The method 'initState' isn't defined in a superclass of '_NoteDialogState' • lib/widgets/note_dialog.dart:43:11 • undefined_super_member
+  error • Undefined class 'XFile' • lib/widgets/note_dialog.dart:47:11 • undefined_class
+  error • Undefined name 'ImageSource' • lib/widgets/note_dialog.dart:47:58 • undefined_identifier
+  error • Undefined name 'FlutterImageCompress' • lib/widgets/note_dialog.dart:52:26 • undefined_identifier
+  error • The method 'setState' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:61:7 • undefined_method
+  error • Undefined name 'Geolocator' • lib/widgets/note_dialog.dart:70:35 • undefined_identifier
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:72:9 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:73:11 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:74:24 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:74:42 • undefined_method
+  error • Undefined class 'LocationPermission' • lib/widgets/note_dialog.dart:78:7 • undefined_class
+  error • Undefined name 'Geolocator' • lib/widgets/note_dialog.dart:78:45 • undefined_identifier
+  error • Undefined name 'LocationPermission' • lib/widgets/note_dialog.dart:79:25 • undefined_identifier
+  error • Undefined name 'Geolocator' • lib/widgets/note_dialog.dart:80:28 • undefined_identifier
+  error • Undefined name 'LocationPermission' • lib/widgets/note_dialog.dart:81:27 • undefined_identifier
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:82:11 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:83:13 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:84:26 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:84:44 • undefined_method
+  error • Undefined name 'Geolocator' • lib/widgets/note_dialog.dart:88:30 • undefined_identifier
+  error • The method 'LocationSettings' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:89:27 • undefined_method
+  error • Undefined name 'LocationAccuracy' • lib/widgets/note_dialog.dart:89:54 • undefined_identifier
+  error • The method 'setState' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:92:7 • undefined_method
+  error • The method 'debugPrint' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:97:7 • undefined_method
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:98:7 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:99:9 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:100:22 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:100:40 • undefined_method
+  error • The method 'setState' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:101:7 • undefined_method
+  error • The method 'launchUrl' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:113:27 • undefined_method
+  error • Undefined name 'LaunchMode' • lib/widgets/note_dialog.dart:113:48 • undefined_identifier
+  error • Undefined name 'mounted' • lib/widgets/note_dialog.dart:114:10 • undefined_identifier
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:116:7 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:117:9 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:118:22 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:118:40 • undefined_method
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:124:7 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:124:28 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:125:9 • undefined_method
+  error • The name 'Text' isn't a class • lib/widgets/note_dialog.dart:126:26 • creation_with_non_type
+  error • The name 'Color' isn't a class • lib/widgets/note_dialog.dart:127:34 • creation_with_non_type
+  error • Undefined name 'SnackBarBehavior' • lib/widgets/note_dialog.dart:128:21 • undefined_identifier
+  error • The method 'RoundedRectangleBorder' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:129:18 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/widgets/note_dialog.dart:129:55 • undefined_identifier
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:136:11 • undefined_identifier
+  error • Undefined name 'mounted' • lib/widgets/note_dialog.dart:151:9 • undefined_identifier
+  error • Undefined name 'ScaffoldMessenger' • lib/widgets/note_dialog.dart:152:7 • undefined_identifier
+  error • Undefined name 'context' • lib/widgets/note_dialog.dart:152:28 • undefined_identifier
+  error • The method 'SnackBar' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:153:9 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:154:20 • undefined_method
+  error • The name 'Color' isn't a class • lib/widgets/note_dialog.dart:157:34 • creation_with_non_type
+  error • Undefined name 'SnackBarBehavior' • lib/widgets/note_dialog.dart:158:21 • undefined_identifier
+  error • The method 'RoundedRectangleBorder' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:159:18 • undefined_method
+  error • Undefined name 'BorderRadius' • lib/widgets/note_dialog.dart:159:55 • undefined_identifier
+  error • Undefined class 'Widget' • lib/widgets/note_dialog.dart:166:3 • undefined_class
+warning • The method doesn't override an inherited method • lib/widgets/note_dialog.dart:166:10 • override_on_non_overriding_member
+  error • Undefined class 'BuildContext' • lib/widgets/note_dialog.dart:166:16 • undefined_class
+  error • The method 'AlertDialog' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:167:12 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:168:14 • undefined_method
+  error • Undefined name 'widget' • lib/widgets/note_dialog.dart:168:19 • undefined_identifier
+  error • The method 'Column' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:169:16 • undefined_method
+  error • Undefined name 'CrossAxisAlignment' • lib/widgets/note_dialog.dart:170:29 • undefined_identifier
+  error • The name 'Text' isn't a class • lib/widgets/note_dialog.dart:172:17 • creation_with_non_type
+  error • The method 'TextFormField' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:173:11 • undefined_method
+  error • The name 'Padding' isn't a class • lib/widgets/note_dialog.dart:174:17 • creation_with_non_type
+  error • Undefined name 'EdgeInsets' • lib/widgets/note_dialog.dart:175:22 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:176:20 • undefined_method
+  error • The method 'TextFormField' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:178:11 • undefined_method
+  error • The name 'Padding' isn't a class • lib/widgets/note_dialog.dart:179:17 • creation_with_non_type
+  error • Undefined name 'EdgeInsets' • lib/widgets/note_dialog.dart:180:22 • undefined_identifier
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:181:20 • undefined_method
+  error • The method 'Expanded' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:183:11 • undefined_method
+  error • Undefined name 'Image' • lib/widgets/note_dialog.dart:185:19 • undefined_identifier
+  error • Undefined name 'BoxFit' • lib/widgets/note_dialog.dart:185:51 • undefined_identifier
+  error • The method 'Center' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:186:19 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:186:33 • undefined_method
+  error • The method 'ElevatedButton' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:188:11 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:190:20 • undefined_method
+  error • The method 'SizedBox' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:192:11 • undefined_method
+  error • The method 'ElevatedButton' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:193:11 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:197:20 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:200:13 • undefined_method
+  error • The method 'TextButton' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:203:13 • undefined_method
+  error • The name 'Text' isn't a class • lib/widgets/note_dialog.dart:203:57 • creation_with_non_type
+  error • The method 'SizedBox' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:204:11 • undefined_method
+  error • The method 'ElevatedButton' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:205:11 • undefined_method
+  error • The method 'Text' isn't defined for the type '_NoteDialogState' • lib/widgets/note_dialog.dart:209:20 • undefined_method
+
+213 issues found. (ran in 1.5s)

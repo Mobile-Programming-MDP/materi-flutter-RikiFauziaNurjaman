@@ -1,0 +1,8 @@
+Analyzing notes...                                              
+
+   info • Don't use 'BuildContext's across async gaps • lib/screens/note_list_screen.dart:121:64 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/note_dialog.dart:73:11 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/note_dialog.dart:83:13 • use_build_context_synchronously
+   info • Don't use 'BuildContext's across async gaps • lib/widgets/note_dialog.dart:99:9 • use_build_context_synchronously
+
+4 issues found. (ran in 10.7s)
