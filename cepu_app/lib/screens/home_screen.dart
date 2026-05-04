@@ -2,6 +2,7 @@ import 'package:cepu_app/screens/add_post_screen.dart';
 import 'package:cepu_app/screens/sign_screen.dart';
 import 'package:cepu_app/service/post_service.dart';
 import 'package:cepu_app/widget/post_list_item.dart';
+import 'package:cepu_app/widget/search_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   String generateAvatarUrl(String? fullName) {
-    final formattedName = fullName!.trim().replaceAll(' ', '+');
+    final name = (fullName != null && fullName.trim().isNotEmpty) ? fullName : 'User';
+    final formattedName = name.trim().replaceAll(' ', '+');
     return 'https://ui-avatars.com/api/?name=$formattedName&color=FFFFFF&background=000000';
   }
 
@@ -53,17 +55,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
       body: Column(
         children: [
+          const SearchWidget(hintText: "Cari tempat wisata impianmu..."),
           const SizedBox(height: 8.0),
           Image.network(
             generateAvatarUrl(
-              FirebaseAuth.instance.currentUser?.displayName.toString(),
+              FirebaseAuth.instance.currentUser?.displayName ?? FirebaseAuth.instance.currentUser?.email,
             ),
             width: 80,
             height: 80,
           ),
           const SizedBox(height: 8.0),
           Text(
-            FirebaseAuth.instance.currentUser!.displayName!,
+            FirebaseAuth.instance.currentUser?.displayName ?? FirebaseAuth.instance.currentUser?.email ?? 'Unknown User',
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8.0),
