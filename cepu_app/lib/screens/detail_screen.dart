@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cepu_app/models/post.dart';
+import 'package:cepu_app/screens/map_detail_screen.dart';
 import 'package:cepu_app/service/post_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -116,6 +117,17 @@ class DetailScreen extends StatelessWidget {
                           style: const TextStyle(color: Colors.grey),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 14),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => MapDetailScreen(post: post),
+                          ),
+                        );
+                      },
+                      child: const Text('View on Map'),
                     ),
                   ],
                 ],
