@@ -7,6 +7,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cepu_app/models/post.dart';
 import 'package:cepu_app/service/post_service.dart';
+import 'package:http/http.dart' as http;
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});
@@ -20,18 +21,21 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final ImagePicker _picker = ImagePicker();
   String? _image;
   Uint8List? _imageBytes;
+  String? _base64Image;
   List<String> categories = [
     "Jalan Rusak",
     "Lampu Jalan Mati",
     "Lawan Arah",
     "Merokok di Jalan",
     "Tidak Pakai Helm",
+    "Lainnya"
   ];
   String? _category;
   String? _latitude;
   String? _longitude;
   bool _isSubmitting = false;
   bool _isGettingLocation = false;
+  bool _isGenerating = false;
 
   Future<void> pickAndConvertThenCompressImage() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -39,19 +43,91 @@ class _AddPostScreenState extends State<AddPostScreen> {
     if (image != null) {
       final bytes = await image.readAsBytes();
 
-      var result = await FlutterImageCompress.compressWithList(
+      final compressedImage = await FlutterImageCompress.compressWithList(
         bytes,
         quality: 80,
-        minWidth: 1280,
-        minHeight: 1280,
       );
 
-      final encodedResult = base64Encode(result);
-
       setState(() {
-        _image = encodedResult;
-        _imageBytes = result;
+        _imageBytes = compressedImage;
+        _base64Image = base64Encode(compressedImage);
+        _image = _base64Image;
       });
+    }
+  }
+
+  Future<void> generateDescriptionWithAI() async {
+    if (_base64Image == null) return;
+    setState(() => _isGenerating = true);
+    try {
+      const apiKey = "AIzaSyDv5d_EMvEv9HBejeWyuAOiLrJbUWdIf1g";
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$apiKey';
+      final body = jsonEncode({
+        "contents": [
+          {
+            "parts": [
+              {
+                "inlineData": {
+                  "mimeType": "image/jpeg",
+                  "data": _base64Image,
+                }
+              },
+              {
+                "text": "Berdasarkan foto ini, identifikasi utama kerusakan fasilitas umum "
+                    "dari daftar berikut: Jalan Rusak, Lampu Jalan Mati, Saluran Air Mampet, Sampah Liar, dan Pagar Rusak dan lainnya. "
+                    "Pilih salah satu kategori paling dominan untuk di laporkan. "
+                    "Buat deskripsi laporan singkat padat dan jelas untuk laporan perbaikan, dan tambahkan permohonan perbaikan. "
+                    "Fokus pada kerusakan fasilitas umum dan hindari spekulasi lain. "
+                    "Format output yang diinginkan:\n"
+                    "kategori: [Kategori yang dipilih]\n"
+                    "deskripsi: [Deskripsi singkat]"
+              }
+            ]
+          }
+        ]
+      });
+      final headers = {'Content-Type': 'application/json'};
+      final response = await http.post(
+        Uri.parse(url),
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 200) {
+        final jsonResponse = json.decode(response.body);
+        final text = jsonResponse['candidates'][0]['content']['parts'][0]['text'];
+        debugPrint("AI TEXT: $text");
+        if (text != null && text.toString().isNotEmpty) {
+          final lines = text.toString().trim().split('\n');
+
+          String? aiCategory;
+          String? aiDescription;
+          for (var line in lines) {
+            final lower = line.toLowerCase();
+            if (lower.startsWith("kategori: ")) {
+              aiCategory = line.substring("kategori: ".length).trim();
+            } else if (lower.startsWith("deskripsi: ")) {
+              aiDescription = line.substring("deskripsi: ".length).trim();
+            }
+          }
+          aiDescription ??= text.toString().trim();
+          
+          setState(() {
+            if (aiCategory != null && categories.any((cat) => cat.toLowerCase() == aiCategory!.toLowerCase())) {
+              _category = categories.firstWhere((cat) => cat.toLowerCase() == aiCategory!.toLowerCase());
+            } else {
+              _category = "Lainnya";
+            }
+            _descriptionController.text = aiDescription ?? "";
+          });
+        }
+      } else {
+        debugPrint('Error generate AI: ${response.body}');
+      }
+    } catch (e) {
+      debugPrint('Failed to generate AI: $e');
+    } finally {
+      if (mounted) setState(() => _isGenerating = false);
     }
   }
 
@@ -81,9 +157,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
     try {
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Layanan Lokasi Tidak Aktif ")));
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Layanan Lokasi Tidak Aktif ")));
+        }
         return;
       }
 
@@ -91,9 +168,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
         if (permission == LocationPermission.deniedForever) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text("Akses Ditolak")));
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Akses Ditolak")));
+          }
           return;
         }
       }
@@ -114,9 +192,10 @@ class _AddPostScreenState extends State<AddPostScreen> {
         _isGettingLocation = false;
       });
       debugPrint("Failed to retrieve location : $e");
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Gagal mengambil lokasi.")));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Gagal mengambil lokasi.")));
+      }
       setState(() {
         _latitude = null;
         _longitude = null;
@@ -161,7 +240,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         Navigator.of(context).pop();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("Data berhasil ditambahkan"),
+            content: const Text("Data berhasil ditambahkan"),
             backgroundColor: const Color(0xFF1B5E20),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
@@ -188,9 +267,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add new post")),
+      appBar: AppBar(title: const Text("Add new post")),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -208,21 +287,44 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   )
                 : ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.memory(
-                      _imageBytes!,
-                      height: 180,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                    child: Stack(
+                      children: [
+                        Image.memory(
+                          _imageBytes!,
+                          height: 180,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                        if (_isGenerating)
+                          Positioned.fill(
+                            child: Container(
+                              color: Colors.black54,
+                              child: const Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircularProgressIndicator(color: Colors.white),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      "Menganalisis gambar...",
+                                      style: TextStyle(color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
             const SizedBox(height: 12),
             OutlinedButton(
-              onPressed: _isSubmitting ? null : pickAndConvertThenCompressImage,
+              onPressed: (_isSubmitting || _isGenerating) ? null : pickAndConvertThenCompressImage,
               child: const Text('Pick Image'),
             ),
             const SizedBox(height: 16),
             OutlinedButton(
-              onPressed: _isSubmitting ? null : _showCategorySelector,
+              onPressed: (_isSubmitting || _isGenerating) ? null : _showCategorySelector,
               child: const Text('Select Category'),
             ),
             const SizedBox(height: 8),
@@ -232,6 +334,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
               style: const TextStyle(fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 16),
+            OutlinedButton.icon(
+              onPressed: (_isSubmitting || _isGenerating || _base64Image == null) 
+                  ? null 
+                  : generateDescriptionWithAI,
+              icon: const Icon(Icons.auto_awesome),
+              label: const Text('Generate Deskripsi dengan AI'),
+            ),
+            const SizedBox(height: 8),
             TextField(
               controller: _descriptionController,
               maxLines: 4,
@@ -263,7 +373,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: _isSubmitting ? null : _submit,
+              onPressed: (_isSubmitting || _isGenerating) ? null : _submit,
               child: Text(_isSubmitting ? 'Submitting...' : 'Submit'),
             ),
           ],

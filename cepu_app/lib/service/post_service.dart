@@ -3,42 +3,52 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PostService {
   static final FirebaseFirestore _database = FirebaseFirestore.instance;
-  static final CollectionReference _postCollection = _database.collection(
-    'post',
+  static final CollectionReference _postsCollection = _database.collection(
+    'posts',
   );
 
   static Future<void> addPost(Post post) async {
-    Map<String, dynamic> newNote = {
+    Map<String, dynamic> newPost = {
       'image': post.image,
       'description': post.description,
       'category': post.category,
       'latitude': post.latitude,
       'longitude': post.longitude,
-      'user_id': post.userId,
-      'fullName': post.fullName,
       'created_at': FieldValue.serverTimestamp(),
       'updated_at': FieldValue.serverTimestamp(),
+      'user_id': post.userId,
+      'user_full_name': post.fullName,
     };
-    await _postCollection.add(newNote);
+    await _postsCollection.add(newPost);
   }
 
-  static Future<void> updatePost(Post post) async {
-    Map<String, dynamic> updatedNote = {
+  static Future<void> updatPost(Post post) async {
+    Map<String, dynamic> updatedPost = {
       'image': post.image,
       'description': post.description,
+      'category': post.category,
       'latitude': post.latitude,
       'longitude': post.longitude,
       'created_at': post.createdAt,
-      'user_id': post.userId,
-      'fullName': post.fullName,
       'updated_at': FieldValue.serverTimestamp(),
+      'user_id': post.userId,
+      'user_full_name': post.fullName,
     };
-    await _postCollection.doc(post.id).update(updatedNote);
+
+    await _postsCollection.doc(post.id).update(updatedPost);
+  }
+
+  static Future<void> deletePost(Post post) async {
+    await _postsCollection.doc(post.id).delete();
+  }
+
+  static Future<QuerySnapshot> retrievePost() {
+    return _postsCollection.get();
   }
 
   static Stream<List<Post>> getPostList() {
-    return _postCollection.snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
+    return _postsCollection.snapshots().map((snapshot) {
+      return snapshot.docs.map<Post>((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         return Post(
           id: doc.id,
@@ -54,27 +64,20 @@ class PostService {
           latitude: data['latitude'],
           longitude: data['longitude'],
           userId: data['user_id'],
-          fullName: data['fullName'],
+          fullName: data['user_full_name'],
         );
       }).toList();
     });
   }
 
-  static Future<void> deletePost(Post post) async {
-    await _postCollection.doc(post.id).delete();
-  }
-
-  static Future<QuerySnapshot> retrievePost() async {
-    return await _postCollection.get();
-  }
-
+  //1. Create function getPostListByCategory dgn parameter category
   static Stream<List<Post>> getPostListByCategory(String? category) {
-    Query query = _postCollection;
+    Query query = _postsCollection;
     if (category != null) {
       query = query.where('category', isEqualTo: category);
     }
     return query.snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
+      return snapshot.docs.map<Post>((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         return Post(
           id: doc.id,
@@ -90,7 +93,7 @@ class PostService {
           latitude: data['latitude'],
           longitude: data['longitude'],
           userId: data['user_id'],
-          fullName: data['fullName'],
+          fullName: data['user_full_name'],
         );
       }).toList();
     });
